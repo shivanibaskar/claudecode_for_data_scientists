@@ -1,0 +1,353 @@
+{
+  "schema": {
+    "Date": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 365
+    },
+    "Time": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 62910
+    },
+    "Booking ID": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 148767
+    },
+    "Booking Status": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 5
+    },
+    "Customer ID": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 148788
+    },
+    "Vehicle Type": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 7
+    },
+    "Pickup Location": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 176
+    },
+    "Drop Location": {
+      "dtype": "str",
+      "non_null": 150000,
+      "null_%": 0.0,
+      "nunique": 176
+    },
+    "Avg VTAT": {
+      "dtype": "float64",
+      "non_null": 139500,
+      "null_%": 7.0,
+      "nunique": 181
+    },
+    "Avg CTAT": {
+      "dtype": "float64",
+      "non_null": 102000,
+      "null_%": 32.0,
+      "nunique": 351
+    },
+    "Cancelled Rides by Customer": {
+      "dtype": "float64",
+      "non_null": 10500,
+      "null_%": 93.0,
+      "nunique": 1
+    },
+    "Reason for cancelling by Customer": {
+      "dtype": "str",
+      "non_null": 10500,
+      "null_%": 93.0,
+      "nunique": 5
+    },
+    "Cancelled Rides by Driver": {
+      "dtype": "float64",
+      "non_null": 27000,
+      "null_%": 82.0,
+      "nunique": 1
+    },
+    "Driver Cancellation Reason": {
+      "dtype": "str",
+      "non_null": 27000,
+      "null_%": 82.0,
+      "nunique": 4
+    },
+    "Incomplete Rides": {
+      "dtype": "float64",
+      "non_null": 9000,
+      "null_%": 94.0,
+      "nunique": 1
+    },
+    "Incomplete Rides Reason": {
+      "dtype": "str",
+      "non_null": 9000,
+      "null_%": 94.0,
+      "nunique": 3
+    },
+    "Booking Value": {
+      "dtype": "float64",
+      "non_null": 102000,
+      "null_%": 32.0,
+      "nunique": 2566
+    },
+    "Ride Distance": {
+      "dtype": "float64",
+      "non_null": 102000,
+      "null_%": 32.0,
+      "nunique": 4901
+    },
+    "Driver Ratings": {
+      "dtype": "float64",
+      "non_null": 93000,
+      "null_%": 38.0,
+      "nunique": 21
+    },
+    "Customer Rating": {
+      "dtype": "float64",
+      "non_null": 93000,
+      "null_%": 38.0,
+      "nunique": 21
+    },
+    "Payment Method": {
+      "dtype": "str",
+      "non_null": 102000,
+      "null_%": 32.0,
+      "nunique": 5
+    }
+  },
+  "missing_values": {
+    "Avg VTAT": {
+      "null_count": 10500,
+      "null_%": 7.0
+    },
+    "Avg CTAT": {
+      "null_count": 48000,
+      "null_%": 32.0
+    },
+    "Booking Value": {
+      "null_count": 48000,
+      "null_%": 32.0
+    },
+    "Ride Distance": {
+      "null_count": 48000,
+      "null_%": 32.0
+    },
+    "Payment Method": {
+      "null_count": 48000,
+      "null_%": 32.0
+    },
+    "Driver Ratings": {
+      "null_count": 57000,
+      "null_%": 38.0
+    },
+    "Customer Rating": {
+      "null_count": 57000,
+      "null_%": 38.0
+    },
+    "Cancelled Rides by Driver": {
+      "null_count": 123000,
+      "null_%": 82.0
+    },
+    "Driver Cancellation Reason": {
+      "null_count": 123000,
+      "null_%": 82.0
+    },
+    "Cancelled Rides by Customer": {
+      "null_count": 139500,
+      "null_%": 93.0
+    },
+    "Reason for cancelling by Customer": {
+      "null_count": 139500,
+      "null_%": 93.0
+    },
+    "Incomplete Rides": {
+      "null_count": 141000,
+      "null_%": 94.0
+    },
+    "Incomplete Rides Reason": {
+      "null_count": 141000,
+      "null_%": 94.0
+    }
+  },
+  "booking_status": {
+    "Completed": {
+      "count": 93000,
+      "%": 62.0
+    },
+    "Cancelled by Driver": {
+      "count": 27000,
+      "%": 18.0
+    },
+    "No Driver Found": {
+      "count": 10500,
+      "%": 7.0
+    },
+    "Cancelled by Customer": {
+      "count": 10500,
+      "%": 7.0
+    },
+    "Incomplete": {
+      "count": 9000,
+      "%": 6.0
+    }
+  },
+  "vehicle_type_by_status": {
+    "Auto": {
+      "Cancelled by Customer": 7.2,
+      "Cancelled by Driver": 17.8,
+      "Completed": 61.9,
+      "Incomplete": 6.0,
+      "No Driver Found": 7.2
+    },
+    "Bike": {
+      "Cancelled by Customer": 7.0,
+      "Cancelled by Driver": 18.1,
+      "Completed": 62.3,
+      "Incomplete": 5.9,
+      "No Driver Found": 6.7
+    },
+    "Go Mini": {
+      "Cancelled by Customer": 7.0,
+      "Cancelled by Driver": 17.9,
+      "Completed": 62.2,
+      "Incomplete": 6.1,
+      "No Driver Found": 6.8
+    },
+    "Go Sedan": {
+      "Cancelled by Customer": 6.7,
+      "Cancelled by Driver": 18.5,
+      "Completed": 61.4,
+      "Incomplete": 6.0,
+      "No Driver Found": 7.2
+    },
+    "Premier Sedan": {
+      "Cancelled by Customer": 7.0,
+      "Cancelled by Driver": 17.9,
+      "Completed": 62.1,
+      "Incomplete": 5.9,
+      "No Driver Found": 7.1
+    },
+    "Uber XL": {
+      "Cancelled by Customer": 7.3,
+      "Cancelled by Driver": 17.1,
+      "Completed": 62.6,
+      "Incomplete": 5.9,
+      "No Driver Found": 7.1
+    },
+    "eBike": {
+      "Cancelled by Customer": 6.8,
+      "Cancelled by Driver": 18.1,
+      "Completed": 62.1,
+      "Incomplete": 6.0,
+      "No Driver Found": 7.1
+    }
+  },
+  "numeric_distributions": {
+    "Booking Value": {
+      "count": 102000.0,
+      "mean": 508.29591176470586,
+      "std": 395.8057740380037,
+      "min": 50.0,
+      "25%": 234.0,
+      "50%": 414.0,
+      "75%": 689.0,
+      "max": 4277.0
+    },
+    "Ride Distance": {
+      "count": 102000.0,
+      "mean": 24.63701166666667,
+      "std": 14.002138317198431,
+      "min": 1.0,
+      "25%": 12.46,
+      "50%": 23.72,
+      "75%": 36.82,
+      "max": 50.0
+    },
+    "Avg VTAT": {
+      "count": 139500.0,
+      "mean": 8.456351971326166,
+      "std": 3.773563826409567,
+      "min": 2.0,
+      "25%": 5.3,
+      "50%": 8.3,
+      "75%": 11.3,
+      "max": 20.0
+    },
+    "Avg CTAT": {
+      "count": 102000.0,
+      "mean": 29.149636274509803,
+      "std": 8.902577244373289,
+      "min": 10.0,
+      "25%": 21.6,
+      "50%": 28.8,
+      "75%": 36.8,
+      "max": 45.0
+    },
+    "Driver Ratings": {
+      "count": 93000.0,
+      "mean": 4.23099247311828,
+      "std": 0.4368714686526258,
+      "min": 3.0,
+      "25%": 4.1,
+      "50%": 4.3,
+      "75%": 4.6,
+      "max": 5.0
+    },
+    "Customer Rating": {
+      "count": 93000.0,
+      "mean": 4.404583870967742,
+      "std": 0.43781873281871037,
+      "min": 3.0,
+      "25%": 4.2,
+      "50%": 4.5,
+      "75%": 4.8,
+      "max": 5.0
+    }
+  },
+  "ratings": {
+    "Driver Ratings": {
+      "mean": 4.231,
+      "median": 4.3,
+      "std": 0.437
+    },
+    "Customer Rating": {
+      "mean": 4.405,
+      "median": 4.5,
+      "std": 0.438
+    }
+  },
+  "cancellation_reasons": {
+    "customer": {
+      "Wrong Address": 2362,
+      "Change of plans": 2353,
+      "Driver is not moving towards pickup location": 2335,
+      "Driver asked to cancel": 2295,
+      "AC is not working": 1155
+    },
+    "driver": {
+      "Customer related issue": 6837,
+      "The customer was coughing/sick": 6751,
+      "Personal & Car related issues": 6726,
+      "More than permitted people in there": 6686
+    }
+  },
+  "payment_methods": {
+    "UPI": 45909,
+    "Cash": 25367,
+    "Uber Wallet": 12276,
+    "Credit Card": 10209,
+    "Debit Card": 8239
+  }
+}
