@@ -1,0 +1,510 @@
+{
+  "sections": [
+    {
+      "section_id": "01_setup",
+      "title": "Setup",
+      "cell_type": "setup",
+      "purpose": "Load libraries and initialize AnalysisLog for correlations investigation",
+      "data": {
+        "libraries": [
+          "pandas",
+          "numpy"
+        ]
+      }
+    },
+    {
+      "section_id": "02_load_data",
+      "title": "Load Data",
+      "cell_type": "setup",
+      "purpose": "Load dataset and filter to completed rides where both Booking Value and Ride Distance are non-null",
+      "data": {
+        "total_rows": 150000,
+        "completed_rows": 93000
+      }
+    },
+    {
+      "section_id": "03_fare_distance_corr",
+      "title": "Booking Value vs Ride Distance \u2014 Pearson and Spearman",
+      "cell_type": "analysis",
+      "purpose": "Test linear and rank-based correlations between fare and distance to rule out non-linear relationships masking a real signal",
+      "data": {
+        "pearson": 0.0057,
+        "spearman_via_rank": 0.0038,
+        "n": 93000
+      }
+    },
+    {
+      "section_id": "04_distribution_check",
+      "title": "Fare and Distance \u2014 Uniform Distribution Test",
+      "cell_type": "analysis",
+      "purpose": "Compare actual mean/std against what a uniform distribution over the same range would produce, to detect independently generated columns",
+      "data": {
+        "booking_value": {
+          "actual_mean": 508.18,
+          "actual_std": 396.06,
+          "uniform_expected_mean": 2163.5,
+          "uniform_expected_std": 1220.23
+        },
+        "ride_distance": {
+          "actual_mean": 26.0005,
+          "actual_std": 13.8242,
+          "uniform_expected_mean": 26.0,
+          "uniform_expected_std": 13.8564
+        }
+      }
+    },
+    {
+      "section_id": "05_corr_by_vehicle",
+      "title": "Fare vs Distance Correlation by Vehicle Type",
+      "cell_type": "analysis",
+      "purpose": "Test whether pooling vehicle types with different per-km rates suppresses the fare-distance correlation",
+      "data": [
+        {
+          "Vehicle Type": "Auto",
+          "n": 23155.0,
+          "pearson": 0.0087,
+          "spearman": 0.0061,
+          "fare_mean": 506.48,
+          "dist_mean": 25.99
+        },
+        {
+          "Vehicle Type": "Bike",
+          "n": 14034.0,
+          "pearson": 0.0107,
+          "spearman": 0.0095,
+          "fare_mean": 509.11,
+          "dist_mean": 26.0
+        },
+        {
+          "Vehicle Type": "Go Mini",
+          "n": 18549.0,
+          "pearson": 0.0045,
+          "spearman": 0.0023,
+          "fare_mean": 507.38,
+          "dist_mean": 25.99
+        },
+        {
+          "Vehicle Type": "Go Sedan",
+          "n": 16676.0,
+          "pearson": 0.0011,
+          "spearman": -0.0053,
+          "fare_mean": 512.03,
+          "dist_mean": 25.98
+        },
+        {
+          "Vehicle Type": "Premier Sedan",
+          "n": 11252.0,
+          "pearson": 0.0071,
+          "spearman": 0.0046,
+          "fare_mean": 509.57,
+          "dist_mean": 25.95
+        },
+        {
+          "Vehicle Type": "Uber XL",
+          "n": 2783.0,
+          "pearson": -0.0326,
+          "spearman": -0.0241,
+          "fare_mean": 505.3,
+          "dist_mean": 25.72
+        },
+        {
+          "Vehicle Type": "eBike",
+          "n": 6551.0,
+          "pearson": 0.0129,
+          "spearman": 0.0227,
+          "fare_mean": 503.46,
+          "dist_mean": 26.34
+        }
+      ]
+    },
+    {
+      "section_id": "06_decile_analysis",
+      "title": "Mean Fare by Distance Decile",
+      "cell_type": "analysis",
+      "purpose": "Check whether mean fare rises monotonically across distance deciles, which would confirm a real relationship masked by noise in the raw correlation",
+      "data": {
+        "0": {
+          "n": 9319,
+          "dist_min": 2.0,
+          "dist_max": 6.82,
+          "fare_mean": 502.33,
+          "fare_median": 410.0
+        },
+        "1": {
+          "n": 9293,
+          "dist_min": 6.83,
+          "dist_max": 11.68,
+          "fare_mean": 506.3,
+          "fare_median": 412.0
+        },
+        "2": {
+          "n": 9289,
+          "dist_min": 11.69,
+          "dist_max": 16.41,
+          "fare_mean": 502.6,
+          "fare_median": 408.0
+        },
+        "3": {
+          "n": 9309,
+          "dist_min": 16.42,
+          "dist_max": 21.24,
+          "fare_mean": 510.12,
+          "fare_median": 416.0
+        },
+        "4": {
+          "n": 9301,
+          "dist_min": 21.25,
+          "dist_max": 26.02,
+          "fare_mean": 513.68,
+          "fare_median": 419.0
+        },
+        "5": {
+          "n": 9293,
+          "dist_min": 26.03,
+          "dist_max": 30.78,
+          "fare_mean": 508.83,
+          "fare_median": 414.0
+        },
+        "6": {
+          "n": 9312,
+          "dist_min": 30.79,
+          "dist_max": 35.58,
+          "fare_mean": 503.98,
+          "fare_median": 414.0
+        },
+        "7": {
+          "n": 9289,
+          "dist_min": 35.59,
+          "dist_max": 40.34,
+          "fare_mean": 513.22,
+          "fare_median": 416.0
+        },
+        "8": {
+          "n": 9306,
+          "dist_min": 40.35,
+          "dist_max": 45.12,
+          "fare_mean": 511.9,
+          "fare_median": 415.0
+        },
+        "9": {
+          "n": 9289,
+          "dist_min": 45.13,
+          "dist_max": 50.0,
+          "fare_mean": 508.84,
+          "fare_median": 414.0
+        }
+      }
+    },
+    {
+      "section_id": "07_implied_rate",
+      "title": "Implied Per-km Rate (Fare / Distance)",
+      "cell_type": "analysis",
+      "purpose": "Check whether fare/distance clusters around a consistent per-km rate per vehicle type; extreme variance indicates fare and distance are independently generated",
+      "data": {
+        "overall": {
+          "mean": 33.86,
+          "std": 54.14,
+          "cv": 1.599,
+          "min": 1.01,
+          "max": 1666.99
+        },
+        "by_vehicle": {
+          "Auto": {
+            "mean": 34.0,
+            "std": 54.88,
+            "min": 1.02,
+            "max": 1483.83,
+            "p25": 9.01,
+            "p75": 35.53
+          },
+          "Bike": {
+            "mean": 33.89,
+            "std": 54.61,
+            "min": 1.02,
+            "max": 1582.77,
+            "p25": 8.96,
+            "p75": 36.0
+          },
+          "Go Mini": {
+            "mean": 33.49,
+            "std": 51.43,
+            "min": 1.01,
+            "max": 1263.76,
+            "p25": 8.94,
+            "p75": 35.57
+          },
+          "Go Sedan": {
+            "mean": 34.66,
+            "std": 57.05,
+            "min": 1.03,
+            "max": 1659.74,
+            "p25": 8.97,
+            "p75": 36.0
+          },
+          "Premier Sedan": {
+            "mean": 33.73,
+            "std": 54.31,
+            "min": 1.04,
+            "max": 1666.99,
+            "p25": 9.17,
+            "p75": 35.52
+          },
+          "Uber XL": {
+            "mean": 33.85,
+            "std": 51.66,
+            "min": 1.11,
+            "max": 649.43,
+            "p25": 9.21,
+            "p75": 35.13
+          },
+          "eBike": {
+            "mean": 32.47,
+            "std": 50.99,
+            "min": 1.02,
+            "max": 822.94,
+            "p25": 8.78,
+            "p75": 33.75
+          }
+        }
+      }
+    },
+    {
+      "section_id": "08_rating_corr",
+      "title": "Driver Rating vs Customer Rating \u2014 Pearson and Spearman",
+      "cell_type": "analysis",
+      "purpose": "Confirm whether the near-zero correlation between driver and customer ratings holds under both linear and rank-based methods",
+      "data": {
+        "pearson": -0.001,
+        "spearman_via_rank": -0.0024,
+        "n": 93000
+      }
+    },
+    {
+      "section_id": "09_rating_pair_distribution",
+      "title": "Driver vs Customer Rating \u2014 Joint Value Pair Frequency",
+      "cell_type": "analysis",
+      "purpose": "Check the joint distribution of rating pairs to determine if ratings are independently generated or if matching/diagonal pairs are over-represented",
+      "data": {
+        "possible_pairs": 441,
+        "observed_pairs": 441,
+        "top_10_pairs": [
+          {
+            "Driver Ratings": 4.2,
+            "Customer Rating": 4.9,
+            "count": 1812
+          },
+          {
+            "Driver Ratings": 4.3,
+            "Customer Rating": 4.9,
+            "count": 1786
+          },
+          {
+            "Driver Ratings": 4.2,
+            "Customer Rating": 4.6,
+            "count": 1750
+          },
+          {
+            "Driver Ratings": 4.3,
+            "Customer Rating": 4.6,
+            "count": 1725
+          },
+          {
+            "Driver Ratings": 4.2,
+            "Customer Rating": 4.3,
+            "count": 1671
+          },
+          {
+            "Driver Ratings": 4.3,
+            "Customer Rating": 4.2,
+            "count": 1648
+          },
+          {
+            "Driver Ratings": 4.3,
+            "Customer Rating": 4.3,
+            "count": 1633
+          },
+          {
+            "Driver Ratings": 4.2,
+            "Customer Rating": 4.2,
+            "count": 1507
+          },
+          {
+            "Driver Ratings": 4.6,
+            "Customer Rating": 4.9,
+            "count": 1149
+          },
+          {
+            "Driver Ratings": 4.6,
+            "Customer Rating": 4.6,
+            "count": 1145
+          }
+        ],
+        "rows_where_driver_rating_equals_customer_rating": 6920,
+        "pct_matching_ratings": 7.4,
+        "expected_pct_if_independent": 4.8
+      }
+    },
+    {
+      "section_id": "10_rating_marginal_dist",
+      "title": "Rating Marginal Distributions",
+      "cell_type": "analysis",
+      "purpose": "Examine the frequency of each rating value for drivers and customers to detect uniform generation vs realistic skewed distribution",
+      "data": {
+        "driver_rating": {
+          "nunique": 21,
+          "value_counts": {
+            "3.0": 745,
+            "3.1": 1459,
+            "3.2": 1538,
+            "3.3": 1461,
+            "3.4": 1491,
+            "3.5": 748,
+            "3.6": 2026,
+            "3.7": 3790,
+            "3.8": 3848,
+            "3.9": 3915,
+            "4.0": 1995,
+            "4.1": 6966,
+            "4.2": 13841,
+            "4.3": 14081,
+            "4.4": 7018,
+            "4.5": 4634,
+            "4.6": 9368,
+            "4.7": 4678,
+            "4.8": 2328,
+            "4.9": 4705,
+            "5.0": 2365
+          },
+          "cv_of_frequencies": 0.8783
+        },
+        "customer_rating": {
+          "nunique": 21,
+          "value_counts": {
+            "3.0": 468,
+            "3.1": 1008,
+            "3.2": 881,
+            "3.3": 900,
+            "3.4": 928,
+            "3.5": 443,
+            "3.6": 1194,
+            "3.7": 2354,
+            "3.8": 2357,
+            "3.9": 2370,
+            "4.0": 1185,
+            "4.1": 5396,
+            "4.2": 10697,
+            "4.3": 10995,
+            "4.4": 5279,
+            "4.5": 5890,
+            "4.6": 11533,
+            "4.7": 5763,
+            "4.8": 5880,
+            "4.9": 11642,
+            "5.0": 5837
+          },
+          "cv_of_frequencies": 0.8875
+        }
+      }
+    },
+    {
+      "section_id": "11_conditional_corr_by_tier",
+      "title": "Customer Rating Mean by Driver Rating Tier",
+      "cell_type": "analysis",
+      "purpose": "Check whether customer ratings systematically differ across driver rating tiers, indicating a suppressed relationship not visible in the raw correlation",
+      "data": {
+        "3.0\u20133.5": {
+          "n": 7442,
+          "customer_mean": 4.403,
+          "customer_std": 0.442,
+          "driver_mean": 3.25
+        },
+        "3.5\u20134.0": {
+          "n": 15574,
+          "customer_mean": 4.403,
+          "customer_std": 0.44,
+          "driver_mean": 3.8
+        },
+        "4.0\u20134.5": {
+          "n": 46540,
+          "customer_mean": 4.407,
+          "customer_std": 0.437,
+          "driver_mean": 4.275
+        },
+        "4.5\u20135.0": {
+          "n": 23444,
+          "customer_mean": 4.402,
+          "customer_std": 0.437,
+          "driver_mean": 4.74
+        }
+      }
+    },
+    {
+      "section_id": "12_discrete_value_check",
+      "title": "Rating Discrete Value Structure",
+      "cell_type": "analysis",
+      "purpose": "Verify that both rating columns use a fixed discrete scale with uniform step size, and confirm the exact values present",
+      "data": {
+        "driver_rating_unique_values": [
+          3.0,
+          3.1,
+          3.2,
+          3.3,
+          3.4,
+          3.5,
+          3.6,
+          3.7,
+          3.8,
+          3.9,
+          4.0,
+          4.1,
+          4.2,
+          4.3,
+          4.4,
+          4.5,
+          4.6,
+          4.7,
+          4.8,
+          4.9,
+          5.0
+        ],
+        "driver_step_sizes": [
+          0.1
+        ],
+        "customer_rating_unique_values": [
+          3.0,
+          3.1,
+          3.2,
+          3.3,
+          3.4,
+          3.5,
+          3.6,
+          3.7,
+          3.8,
+          3.9,
+          4.0,
+          4.1,
+          4.2,
+          4.3,
+          4.4,
+          4.5,
+          4.6,
+          4.7,
+          4.8,
+          4.9,
+          5.0
+        ],
+        "customer_step_sizes": [
+          0.1
+        ],
+        "driver_range": [
+          3.0,
+          5.0
+        ],
+        "customer_range": [
+          3.0,
+          5.0
+        ]
+      }
+    }
+  ]
+}
