@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/hooks/verify_loop.py",
+            "command": "python3 /Users/shivanibaskar/Desktop/github/claudecode_for_data_scientists/.claude/hooks/verify_loop.py",
             "_skill": "script-driven-eda",
             "_description": "Blocks stop if the EDA loop is incomplete (new JSON with no notes, or process files not updated)"
           }

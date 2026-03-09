@@ -65,7 +65,9 @@ def check_dataset(dataset_dir: Path) -> list[str]:
 
 
 def main():
-    root = Path.cwd()
+    # Resolve project root from the hook file's location (.claude/hooks/verify_loop.py)
+    # so this works regardless of Claude's CWD at stop time.
+    root = Path(__file__).resolve().parents[2]
     workflow_dir = root / "script_driven_eda"
 
     if not workflow_dir.exists():
