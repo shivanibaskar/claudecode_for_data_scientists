@@ -8,3 +8,4 @@ data/
 *.csv
 *.xlsx
 .ipynb_checkpoints/
+.claude/settings.local.json
