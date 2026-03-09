@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/verify_loop.py",
+            "_skill": "script-driven-eda",
+            "_description": "Blocks stop if the EDA loop is incomplete (new JSON with no notes, or process files not updated)"
+          }
+        ]
+      }
+    ]
+  }
+}
