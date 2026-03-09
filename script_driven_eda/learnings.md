@@ -16,7 +16,7 @@
 ## What didn't work / friction points
 
 - **Hook path was CWD-dependent** — broke the first time we cd'd into a subdirectory. Absolute paths and `Path(__file__)` resolution are non-negotiable for hooks.
-- **`experiment_N` nesting added no value** — removed it. If you need to compare approaches on the same dataset, that's a different workflow folder, not a new experiment number.
+
 - **`settings.local.json` isn't gitignored by default** — caught it before it was pushed, but the API token was already in the file. Add it to `.gitignore` at project setup, not after.
 
 ---
