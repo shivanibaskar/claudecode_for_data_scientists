@@ -1,31 +1,37 @@
 # Claude Code for Data Scientists
 
-A practical guide and collection of examples for using [Claude Code](https://claude.ai/claude-code) effectively in data science and machine learning projects.
+A hands-on exploration of data science workflows with Claude Code — figuring out what actually works efficiently.
 
 ## What This Repo Is
 
-Each folder in this repo represents a dataset. Within each dataset, experiments are run iteratively using Claude Code, with learnings and ideas captured along the way.
+This is an experiment in workflow design, not a polished guide. Each folder represents a different way of working with Claude Code on real data science tasks. The goal is to think through what makes an AI-assisted DS workflow genuinely efficient — and document what we learn along the way.
 
-The goal is to distill what works — prompts, workflows, and patterns — when doing real DS/ML work with Claude Code.
+Datasets are the vehicle. Workflows are the thing being studied.
+
+## Workflows
+
+| Workflow | What it tests | Datasets |
+|----------|--------------|---------|
+| [script_driven_eda](script_driven_eda/) | Claude writes + runs focused Python scripts, generates charts, derives findings, updates notes — full loop in one session | French Motor Claims |
+
+Each workflow folder has a `learnings.md` capturing what worked, what didn't, and open questions about the approach.
 
 ## Repo Structure
 
 ```
 claudecode_for_data_scientists/
-├── dataset_name/
-│   ├── experiment_1/
-│   ├── experiment_2/
-│   ├── learnings.md      # what worked, what didn't, key takeaways
-│   └── ideas.md          # next experiments, open questions, future directions
+├── <workflow>/
+│   ├── README.md        # how this workflow works
+│   ├── learnings.md     # honest account of what worked and what didn't
+│   └── <dataset>/
+│       ├── context.md
+│       ├── code/
+│       ├── notes/
+│       └── process/
+├── utils/
 └── readme.md
 ```
 
-## Datasets
-
-| Dataset | Source | Description |
-|---------|--------|-------------|
-| [uber_ride_analytics](uber_ride_analytics/) | [Kaggle](https://www.kaggle.com/datasets/yashdevladdha/uber-ride-analytics-dashboard/data) | 148K Uber bookings in 2024 — cancellations, revenue, ratings, vehicle types |
-
 ---
 
-*Work in progress.*
+*Work in progress — actively being figured out.*
