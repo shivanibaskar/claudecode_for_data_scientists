@@ -44,10 +44,10 @@ log.add(
 - `data` should be the raw computed result; the LLM will derive findings itself
 - Markdown-only cells do NOT need `log.add()`
 - The final cell of every notebook must be: `log.save("../notebook_logs/<notebook_name>.json")`
-- Notebooks live in `experiment_N/code/`; logs land in `experiment_N/notebook_logs/`
+- Notebooks live in `<dataset>/code/`; logs land in `<dataset>/notebook_logs/`
 
 ### utils location
 
 `utils/analysis_log.py` lives at the project root.
 Import depth from common notebook locations:
-- `experiment_N/code/` → `sys.path.insert(0, os.path.abspath("../../.."))`
+- `<workflow>/<dataset>/code/` → `sys.path.insert(0, os.path.abspath("../../.."))`
